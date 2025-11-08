@@ -1,0 +1,224 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #141414;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar estilo Prime Video */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1f1f1f;
+    padding: 0 30px;
+    height: 60px;
+    z-index: 1000;
+    position: relative;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Título principal */
+h2 {
+    color: #0580CA;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Seção de séries */
+section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 40px 20px;
+    background: linear-gradient(to bottom, #141414, #141414);
+}
+
+/* Card de série estilo Netflix/Prime */
+.serie {
+    background-color: #141414;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.serie:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Imagem da série */
+.serie img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Nome da série */
+.serie p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #f1f1f1;
+    font-size: 16px;
+}
+
+/* Links dentro dos cards */
+.serie a {
+    color: #1ea3f5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.serie a:hover {
+    text-decoration: underline;
+}
+
+/* Sidebar lateral (opcional, caso tenha) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    background-color: #0f1111;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    padding: 10px 0;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+    z-index: 999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar:hover .item .text {
+    opacity: 1;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    color: #ccc;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.item .icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+}
+
+.item .text {
+    opacity: 0;
+    margin-left: 15px;
+    white-space: nowrap;
+    color: #ccc;
+    font-size: 14px;
+    transition: opacity 0.3s ease-in-out 0.25s;
+}
+
+.sidebar hr {
+    border: none;
+    height: 1px;
+    background-color: #141414;
+    margin: 15px 0;
+    width: 80%;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #141414;
+    color: #ccc;
+    text-align: center;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+#filtroSeries {
+    background-color: #4d4d4d;  
+    color: #ffffff;
+
+  }
+  #filtroSeries::placeholder {
+    color: #cccccc;
+  }
+
+.footer-logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.footer-logo::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    height: 10px;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
+    transform: rotate(-45deg);
+    margin-top: 5px;
+}
+
+.footer-links {
+    margin: 10px 0;
+}
+
+.footer-links a {
+    color: #1ea3f5;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-copy {
+    color: #aaa;
+    margin-top: 10px;
+}
