@@ -90,6 +90,16 @@ button:hover {
   border-radius: 8px;
   border: 2px solid #00bfff;
 }
+.images img,
+.card ul li img {
+  transition: transform 0.3s ease;
+}
+
+.images img:hover,
+.card ul li img:hover {
+  transform: translateY(-10px);
+}
+
 
 /* DIREITA */
 .right {
