@@ -13,13 +13,6 @@
                 <img src="/logo/logoSite.png" alt="Logo CupulaFlix">
             </div>
             <nav class="nav-links">
-                <div>
-                  <input 
-                    type="text" 
-                    id="filtroSeries" 
-                    placeholder="Buscar filme..." 
-                    style="padding:10px; width:300px; border-radius:20px; border:none; font-size:16px; background-color:#4d4d4d; color:#ffffff;">
-                </div>
                 <a href="Inicio - Cupula.html">Início</a>
                 <a href="Filmes - Cupula.html" class="active">Filmes</a>
                 <a href="Series - Cupula.html">Séries</a>
@@ -27,15 +20,6 @@
               </nav>
         </header>
         <h2>Filmes</h2>
-
-        <div style="text-align:center; margin:20px 0;">
-            <label for="ordem" style="margin-right:10px;">Ordenar por avaliação:</label>
-            <select id="ordem" style="padding:8px; border-radius:10px; background-color:#4d4d4d; color:#fff; border:none;">
-              <option value="padrao">Padrão</option>
-              <option value="crescente">Crescente</option>
-              <option value="decrescente">Decrescente</option>
-            </select>
-          </div>
         <section>
             <div class="filme">
               <a href="https://www.netflix.com/watch/81128579?..."><img src="/mais vistos/O-Poço.jpeg"></a>
@@ -228,77 +212,11 @@
             <div class="footer-links">
               <a href="central de ajuda - cupula.html">Central de ajuda</a>
               <a href="termos de uso - cupula.html">Termos de uso</a>
-              <a href="#">Ajuda</a>
+              <a href="SobreNos.html">Sobre os desenvolvedores</a>
             </div>
             <div class="footer-copy">
                 © 2025-2025, Germinare.com, Inc. ou suas afiliadas
             </div>
-        </footer>  
-        <script>
-  const input = document.getElementById("filtroSeries");
-  const seletor = document.getElementById("ordem");
-  const secoes = Array.from(document.querySelectorAll("section"));
-  const filmesOriginais = Array.from(document.querySelectorAll(".filme"));
-
-  // 🔍 Filtro por texto
-  input.addEventListener("keyup", () => {
-    const filtro = input.value.toLowerCase();
-    filmesOriginais.forEach(filme => {
-      const titulo = filme.querySelector("p").textContent.toLowerCase();
-      filme.style.display = titulo.includes(filtro) ? "block" : "none";
-    });
-  });
-
-  // 💾 Guarda a ordem padrão
-  const ordemPadrao = filmesOriginais.map(f => f);
-
-  seletor.addEventListener("change", () => {
-    const ordem = seletor.value;
-
-    // remove qualquer container extra antes de tudo
-    const antigoContainer = document.getElementById("containerOrdenado");
-    if (antigoContainer) antigoContainer.remove();
-
-    // coleta apenas os filmes originais (sem duplicar)
-    let filmesOrdenados = [...ordemPadrao];
-
-    // 🧮 Ordena conforme seleção
-    if (ordem === "crescente") {
-      filmesOrdenados.sort((a, b) => {
-        const notaA = parseFloat(a.querySelector("p").textContent.match(/⭐\s*([\d.]+)/)?.[1]) || 0;
-        const notaB = parseFloat(b.querySelector("p").textContent.match(/⭐\s*([\d.]+)/)?.[1]) || 0;
-        return notaA - notaB;
-      });
-    } else if (ordem === "decrescente") {
-      filmesOrdenados.sort((a, b) => {
-        const notaA = parseFloat(a.querySelector("p").textContent.match(/⭐\s*([\d.]+)/)?.[1]) || 0;
-        const notaB = parseFloat(b.querySelector("p").textContent.match(/⭐\s*([\d.]+)/)?.[1]) || 0;
-        return notaB - notaA;
-      });
-    }
-
-    // 🔄 Cria container e insere filmes
-    const container = document.createElement("section");
-    container.id = "containerOrdenado";
-    container.style.display = "flex";
-    container.style.flexWrap = "wrap";
-    container.style.gap = "30px";
-    container.style.justifyContent = "center";
-    container.style.padding = "40px 20px";
-
-    filmesOrdenados.forEach(filme => container.appendChild(filme));
-
-    // esconde as seções originais só visualmente (não apaga)
-    secoes.forEach(sec => (sec.style.display = "none"));
-
-    // adiciona o container ordenado antes do footer
-    document.body.insertBefore(container, document.querySelector(".footer"));
-
-    // se voltar pra padrão
-    
-  });
-</script>
-
-          
+        </footer>      
     </body>
 </html>

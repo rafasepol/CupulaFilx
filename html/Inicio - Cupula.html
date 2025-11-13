@@ -7,14 +7,6 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <!-- Splash Screen (ADICIONADO) -->
-  <div id="splash" aria-hidden="true">
-    <div class="splash-inner">
-      <img src="/logo/logo1.png" alt="" class="splash-logo" />
-      <div class="splash-brand">ALTA CÚPULA DO MAL</div>
-      <div class="splash-loader"></div>
-    </div>
-  </div>
 
   <!-- Navbar -->
   <header class="navbar">
@@ -22,13 +14,6 @@
       <img src="/logo/logoSite.png" alt="Logo Germinaflix">
     </div>
     <nav class="nav-links">
-      <div>
-        <input 
-          type="text" 
-          id="filtroSeries" 
-          placeholder="Buscar filme..." 
-          style="padding:10px; width:300px; border-radius:20px; border:none; font-size:16px; background-color:#4d4d4d; color:#ffffff">
-      </div>
       <a href="Inicio - Cupula.html" class="active">Início</a>
       <a href="Filmes - Cupula.html">Filmes</a>
       <a href="Series - Cupula.html">Séries</a>
@@ -112,52 +97,11 @@
     <div class="footer-links">
       <a href="central de ajuda - cupula.html">Central de ajuda</a>
       <a href="termos de uso - cupula.html">Termos de uso</a>
-      <a href="#">Ajuda</a>
+      <a href="SobreNos.html">Sobre os desenvolvedores</a>
     </div>
     <div class="footer-copy">
       © 2025-2025, Germinare.com, Inc. ou suas afiliadas
     </div>
-  </footer>   
-
-  <script>
-    // 🔎 filtro
-    const input = document.getElementById("filtroSeries");
-    const filmes = document.querySelectorAll(".filme");
-    input.addEventListener("keyup", () => {
-      const filtro = input.value.toLowerCase();
-      filmes.forEach(filme => {
-        const titulo = filme.querySelector("p").textContent.toLowerCase();
-        filme.style.display = titulo.includes(filtro) ? "block" : "none";
-      });
-    });
-
-    // 🟦 splash (uma vez por sessão)
-    (function () {
-      const splash = document.getElementById('splash');
-      const alreadySeen = sessionStorage.getItem('splashSeen');
-
-      if (!splash) return; // segurança: se o HTML do splash não estiver na página, ignora
-
-      if (alreadySeen) { splash.remove(); return; }
-
-      document.body.classList.add('lock');
-      const MIN_TIME = 800;
-      const start = performance.now();
-
-      function hideSplash(){
-        const elapsed = performance.now() - start;
-        const wait = Math.max(0, MIN_TIME - elapsed);
-        setTimeout(() => {
-          splash.classList.add('hide');
-          document.body.classList.remove('lock');
-          sessionStorage.setItem('splashSeen', '1');
-          setTimeout(() => splash.remove(), 700);
-        }, wait);
-      }
-
-      window.addEventListener('load', hideSplash);
-      setTimeout(hideSplash, 4000);
-    })();
-  </script>
+  </footer>    
 </body>
 </html>
