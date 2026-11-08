@@ -1,0 +1,63 @@
+name: CI/CD CupulaFilx
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: Validar site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do projeto
+        uses: actions/checkout@v7
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Instalar ferramentas de validação
+        run: npm install -g htmlhint@1.9.2 linkinator@8.1.0
+
+      - name: Validar HTML
+        run: htmlhint "**/*.html"
+
+      - name: Verificar links e imagens internos
+        run: linkinator "**/*.html" --skip "^https?://(?!localhost|127\.0\.0\.1)"
+
+  deploy:
+    name: Publicar no GitHub Pages
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout do projeto
+        uses: actions/checkout@v7
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Empacotar o site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
+
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v5
